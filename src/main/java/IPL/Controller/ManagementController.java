@@ -35,7 +35,7 @@ public class ManagementController {
 
 	@RequestMapping("managementlogin")
 	// @ResponseBody
-	public ModelAndView mamangementlogin(@RequestParam String username, @RequestParam String password) {
+	public ModelAndView mamangementLogin(@RequestParam String username, @RequestParam String password) {
 		Management management = managementDAO.managementLogin(username, password);
 
 		ModelAndView modelAndView = new ModelAndView();
