@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>players.signup</title>
+<title>playerssignup.jsp</title>
 </head>
 <h1> Welcome To Players Sign  Up Page</h1>
 <body>
@@ -21,22 +21,16 @@ Username: <special:input path="username"/>
 Password: <special:input path="password"/>
 <br>
 <br>
+
+
 Role:
-
 <special:select path="role">
-<special:option value=" ">Select</special:option>
-<br>
-<br>
+<special:option value=" ">Select</special:option> 
 <special:option value="Batsman">Batsman</special:option>
-<br>
-<br>
 <special:option value="Bowler">Bowler</special:option>
-<br>
-<br>
 <special:option value="Allrounder">Allrounder</special:option>
-<br>
-<br>
 <special:option value="WicketKeeper">WicketKeeper</special:option>
+</special:select>
 <br>
 <br>
 
@@ -44,17 +38,47 @@ Role:
 
 
 
+
+Country: 
+<special:select path="country">
+<special:option value=" ">Select</special:option>
+<special:option value="Bharat">Bharat</special:option>
+<special:option value="Afghanistan">Afghanistan</special:option>
+<special:option value="Australia">Australia</special:option>
+<special:option value="Bangladesh">Bangladesh</special:option>
+<special:option value="England">England</special:option>
+<special:option value="Ireland">Ireland</special:option>
+<special:option value="Namibia – Associate Nation">Namibia  Associate Nation</special:option>
+<special:option value="Netherlands – Associate Nation">Netherlands Associate Nation</special:option>
+<special:option value="New Zealand">New Zealand</special:option>
+<special:option value="South Africa">South Africa</special:option>
+<special:option value="Sri Lanka">Sri Lanka</special:option>
+<special:option value="UAE - Associate Nation">UAE Associate Nation</special:option>
+<special:option value="West Indies">West Indies</special:option>
+<special:option value="Zimbabwe">Zimbabwe</special:option>
+</special:select>
+<br>
+<br>
+
+
+
+Base Price: 
+<special:select path="price">
+<special:option value=" ">Select</special:option>
+<special:option value="200">2 cr</special:option>
+<special:option value="150">1.5 cr</special:option>
+<special:option value="100">1 cr</special:option>
+<special:option value="75">75 lakh</special:option>
+<special:option value="50">50 lakh</special:option>
+<special:option value="40">40 lakh</special:option>
+<special:option value="30">30 lakh</special:option>
+<special:option value="20">20 lakh</special:option>
+<special:option value="10">10 lakh</special:option>
 </special:select>
 
 
 
 
-
-
-Country: <special:input path="country"/>
-<br>
-<br>
-Base Price: <special:input path="price"/>
 <br>
 <br>
 

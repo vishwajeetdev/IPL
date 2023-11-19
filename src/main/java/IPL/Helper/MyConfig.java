@@ -2,7 +2,6 @@ package IPL.Helper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import org.springframework.context.annotation.Bean;
@@ -15,14 +14,13 @@ import org.springframework.context.annotation.Configuration;
 //@ComponentScan("IPL.DTO")
 //@ComponentScan("IPL.Helper")
 @ComponentScan("IPL")
-public class MyConfig
-{
+public class MyConfig {
 	@Bean // it will help to create reference variable of interface type.
-	public EntityManagerFactory getEntityManagerFactory() 
-	{
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("dev");
-	
-		return emf;
+	public EntityManager getEntityManagerFactory() {
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("dev");
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+		return entityManager;
 	}
 
 }

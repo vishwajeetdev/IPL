@@ -9,7 +9,7 @@ import IPL.DAO.PlayerDAO;
 import IPL.DTO.Player;
 
 @RestController
-public class Player_Controller 
+public class PlayerController 
 {
 	
 	@Autowired

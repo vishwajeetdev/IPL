@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>index</title>
+<title>management.home</title>
+
 </head>
-<h1>${mag}</h1>
-<a href="managementlogin.jsp">Login as Manangement</a>
+<h1>${msg}</h1>
+<h1>Welcome To Management Home</h1>
+
 <body>
 
 </body>
