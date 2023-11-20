@@ -5,40 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>signup.jsp</title>
-<style type="text/css">
 
-body {
-  font-family: sans-serif;
-  background-color: #f2f2f2;
-}
-
-h1 {
-  text-align: center;
-}
-
-form {
-  width: 300px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-}
-
-input[type="radio"] {
-  margin-right: 10px;
-}
-
-button {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #eee;
-}
-
-
-</style>
 </head>
 <body>
 <h1>Welcome to Signup Page</h1>
@@ -54,6 +21,11 @@ button:hover {
 
 
 <button type="submit">Submit</button> <button type="reset">Cancel</button> 
+
+<br>
+<br>
+<a href="managementlogin.jsp">Login as Manangement</a><br><br>
+<a href="playerlogin.jsp">Login as Player</a>
 
 
 

@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>index</title>
+<title>playerhome.jsp</title>
 </head>
+
 <h1>${msg}</h1>
-<a href="managementlogin.jsp">Login as Manangement</a><br><br>
-<a href="playerlogin.jsp">Login as Player</a>
 <body>
+
+<h1>Welcome to Player home page</h1>
 
 </body>
 </html>

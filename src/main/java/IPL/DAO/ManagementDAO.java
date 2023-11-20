@@ -26,13 +26,7 @@ public class ManagementDAO {
 
 	}
 
-	public Management managementLogin(String username, String password) {
-
-		// Query query = entityManager.createQuery("select x from Management x where
-		// username=?1").setParameter(1,username);
-
-		// List<Management> list = query.getResultList();
-
+	public Management managementLogin(String username) {
 		List<Management> list = entityManager.createQuery("select x from Management x where username=?1").setParameter(1, username).getResultList();
 
 		if (list.isEmpty()) {

@@ -9,25 +9,25 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class Player 
-{
+public class Player {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
-	
+
 	String name;
-	
+
 	String username;
-	
+
 	String role;
-	
+
 	String country;
-	
+
 	double price;
-	
+
 	String password;
-	
-	//boolean status;
+
+	// boolean status;
 
 	String status;
 
@@ -94,6 +94,5 @@ public class Player
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
+
 }

@@ -1,5 +1,7 @@
 package IPL.DAO;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -19,6 +21,17 @@ public class PlayerDAO {
 		entityTransaction.begin();
 		entityManager.persist(player);
 		entityTransaction.commit();
+
+	}
+
+	public Player playerLogin(String username) {
+		List<Player> list = entityManager.createQuery("select x from Player x where username=?1").setParameter(1, username).getResultList();
+
+		if (list.isEmpty()) {
+			return null;
+		} else {
+			return list.get(0);
+		}
 
 	}
 
