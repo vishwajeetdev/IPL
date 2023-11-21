@@ -1,26 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="special" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+    
+        <%@ taglib prefix="special" uri="http://www.springframework.org/tags/form" %>
+        
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>playerssignup.jsp</title>
+<title>editplayer.jsp</title>
 </head>
-<h1> Welcome To Players Sign  Up Page</h1>
+<h1>Welcome to player edit page</h1>
 <body>
 
-<special:form action="playersignup" modelAttribute="player">
+<special:form action="playerupdate" modelAttribute="player">
 
-Name: <special:input path="name"/>
-<br>
-<br>
-Username: <special:input path="username"/>
-<br>
-<br>
-Password: <special:input path="password"/>
-<br>
-<br>
+Id:- <special:input path="id" hidden="true"/> <br><br>
+
+Name: <special:input path="name"/><br><br>
+
+Username: <special:input path="username"/><br><br>
+
+Password: <special:input path="password"/><br><br>
 
 
 Role:
@@ -40,7 +39,7 @@ Role:
 
 
 Country: 
-<special:select path="country">
+<special:select path="country" hidden="true">
 <special:option value=" ">Select</special:option>
 <special:option value="Bharat">Bharat</special:option>
 <special:option value="Afghanistan">Afghanistan</special:option>
@@ -59,6 +58,8 @@ Country:
 </special:select>
 <br>
 <br>
+
+Status: <special:input path="status" hidden="true" /><br><br>
 
 
 
@@ -82,7 +83,7 @@ Base Price:
 <br>
 <br>
 
-<special:button type="submit">Update</special:button>        <special:button type="reset">Cancel</special:button>
+<special:button type="submit">Submit</special:button>        <special:button type="reset">Cancel</special:button>
 
 
 
@@ -90,5 +91,7 @@ Base Price:
 
 </special:form>
 
+
+
 </body>
-</html>
+</html>  

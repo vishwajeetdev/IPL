@@ -35,4 +35,13 @@ public class PlayerDAO {
 
 	}
 
+	public void playerUpdate(Player player) {
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+
+		entityTransaction.begin();
+		entityManager.merge(player);
+		entityTransaction.commit();
+
+	}
+
 }
