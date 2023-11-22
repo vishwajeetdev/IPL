@@ -22,7 +22,7 @@ public class PlayerController {
 	PlayerDAO playerDAO;
 
 	@RequestMapping("playersignup")
-	public void playerSignup(@ModelAttribute Player player) {
+	public ModelAndView playerSignup(@ModelAttribute Player player) {
 		player.setStatus("pending");
 
 		playerDAO.playerSignup(player);
@@ -31,6 +31,8 @@ public class PlayerController {
 
 		modelAndView.addObject("msg", "Player Account created successfully");
 		modelAndView.setViewName("index.jsp");
+
+		return modelAndView;
 
 	}
 

@@ -8,40 +8,31 @@ import javax.persistence.EntityTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import IPL.DTO.Player;
+import IPL.DTO.Team;
 
 @Component
-public class PlayerDAO {
+public class TeamDAO {
 
 	@Autowired
 	EntityManager entityManager;
 
-	public void playerSignup(Player player) {
+	public void teamSignup(Team team) {
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 
 		entityTransaction.begin();
-		entityManager.persist(player);
+		entityManager.persist(team);
 		entityTransaction.commit();
 
 	}
 
-	public Player playerLogin(String username) {
-		List<Player> list = entityManager.createQuery("select x from Player x where username=?1").setParameter(1, username).getResultList();
+	public Team teamLogin(String username) {
+		List<Team> list = entityManager.createQuery("select x from Team x where username=?1").setParameter(1, username).getResultList();
 
 		if (list.isEmpty()) {
 			return null;
 		} else {
 			return list.get(0);
 		}
-
-	}
-
-	public void playerUpdate(Player player) {
-		EntityTransaction entityTransaction = entityManager.getTransaction();
-
-		entityTransaction.begin();
-		entityManager.merge(player);
-		entityTransaction.commit();
 
 	}
 

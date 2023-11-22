@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import IPL.DTO.Management;
 import IPL.DTO.Player;
+import IPL.DTO.Team;
 
 //@org.springframework.stereotype.Controller
 @RestController
@@ -19,6 +20,9 @@ public class Controller {
 
 	@Autowired
 	Player player;
+
+	@Autowired
+	Team team;
 
 	@RequestMapping("signup")
 	@ResponseBody
@@ -35,10 +39,12 @@ public class Controller {
 			modelAndView.addObject("player", player);
 			modelAndView.setViewName("playersignup.jsp");
 
-		} else {
+		} else if (role.equals("Team")) {
+			modelAndView.addObject("team", team);
+			modelAndView.setViewName("teamsignup.jsp");
 
 		}
-		return modelAndView; // if i want to return or carry anything to the front end finally i should return the reference variable of the ModelAndView Class.
+		return modelAndView; // if i want to return or carry anything to the frontend finally i should return the reference variable of the ModelAndView Class.
 
 	}
 
