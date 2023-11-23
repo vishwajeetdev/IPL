@@ -65,7 +65,7 @@ public class Team {
 		this.wallet = wallet;
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 

@@ -50,9 +50,21 @@ public class TeamController {
 			httpSession.setAttribute("team", team); // here it is used to take the current user information -- to edit or update purpose
 
 			if (team.getPassword().equals(password)) {
-				modelAndView.addObject("msg", "Team Login Succesfully");
-				modelAndView.addObject("name", team.getName());
-				modelAndView.setViewName("teamhome.jsp");
+
+				if (team.getStatus()) {
+					httpSession.setAttribute("team", team);
+					modelAndView.addObject("msg", "Team Login Succesfully");
+					modelAndView.addObject("name", team.getName());
+					modelAndView.setViewName("teamhome.jsp");
+
+				} else {
+
+					modelAndView.addObject("msg", "Inactive Account.");
+					modelAndView.addObject("name", team.getName());
+					modelAndView.setViewName("managementhome.jsp");
+
+				}
+
 			} else {
 
 				modelAndView.addObject("msg", "Entered Invalid Password");

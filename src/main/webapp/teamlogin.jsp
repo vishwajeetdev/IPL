@@ -8,10 +8,11 @@
 </head>
 
 <body>
+<h1>${name}</h1>
 <h1>${msg}</h1>
 <h1>Welcome to Team Login </h1>
 
-<form action="teamlogin">
+<form action="teamlogin" method="post">
 Username: <input type="text" name="username" placeholder="Enter Your Username">
 <br>
 <br>
