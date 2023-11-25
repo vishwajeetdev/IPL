@@ -13,5 +13,7 @@
 
 <h1>Welcome to Team Home Page</h1>
 
+<a href="viewallteam">View All Team</a>
+
 </body>
 </html>

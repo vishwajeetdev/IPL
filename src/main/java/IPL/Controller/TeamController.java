@@ -1,5 +1,7 @@
 package IPL.Controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,7 @@ public class TeamController {
 	}
 
 	@RequestMapping("teamlogin")
-	public ModelAndView mamangementLogin(@RequestParam String username, @RequestParam String password, HttpSession httpSession) {
+	public ModelAndView teamLogin(@RequestParam String username, @RequestParam String password, HttpSession httpSession) {
 		Team team = teamDAO.teamLogin(username);
 
 		ModelAndView modelAndView = new ModelAndView();
@@ -51,7 +53,7 @@ public class TeamController {
 
 			if (team.getPassword().equals(password)) {
 
-				if (team.getStatus()) {
+				if (team.isStatus()) {
 					httpSession.setAttribute("team", team);
 					modelAndView.addObject("msg", "Team Login Succesfully");
 					modelAndView.addObject("name", team.getName());
@@ -73,6 +75,31 @@ public class TeamController {
 		}
 
 		return modelAndView;
+
+	}
+
+	@RequestMapping("viewallteam")
+	public ModelAndView viewAllTeam() {
+
+		List<Team> teams = teamDAO.viewAllTeam();
+
+		ModelAndView modelAndView = new ModelAndView();
+
+		if (teams.isEmpty()) {
+			modelAndView.addObject("msg", "No Team Avilable");
+			modelAndView.setViewName("managementhome.jsp");
+
+		} else {
+			modelAndView.addObject("teams", teams);
+			modelAndView.setViewName("viewallteams.jsp");
+
+		}
+		return modelAndView;
+
+	}
+
+	@RequestMapping("viewplayers")
+	public void viewPlayer(@RequestParam("id") int tid) {
 
 	}
 

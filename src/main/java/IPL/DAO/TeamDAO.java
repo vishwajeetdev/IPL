@@ -36,4 +36,11 @@ public class TeamDAO {
 
 	}
 
+	public List<Team> viewAllTeam() {
+
+		List<Team> teams = entityManager.createQuery("select x from Team x").getResultList();
+
+		return teams;
+	}
+
 }
