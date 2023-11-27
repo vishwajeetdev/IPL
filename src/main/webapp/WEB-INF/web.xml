@@ -5,12 +5,12 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   
-  
-  <welcome-file-list>
+    <welcome-file-list>
   
   <welcome-file>signup.jsp</welcome-file>
   
   
   
   </welcome-file-list>
+
 </web-app>

@@ -98,9 +98,4 @@ public class TeamController {
 
 	}
 
-	@RequestMapping("viewplayers")
-	public void viewPlayer(@RequestParam("id") int tid) {
-
-	}
-
 }

@@ -43,4 +43,12 @@ public class TeamDAO {
 		return teams;
 	}
 
+	public Team viewPlayerOfRespectiveTeam(int tid) {
+
+		Team teams = entityManager.find(Team.class, tid);
+
+		return teams;
+
+	}
+
 }

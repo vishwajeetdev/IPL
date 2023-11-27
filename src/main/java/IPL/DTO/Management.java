@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class Management {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
 	String username;

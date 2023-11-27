@@ -3,7 +3,6 @@ package IPL.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,10 +10,8 @@ import IPL.DTO.Management;
 import IPL.DTO.Player;
 import IPL.DTO.Team;
 
-//@org.springframework.stereotype.Controller
 @RestController
 public class Controller {
-
 	@Autowired // it will act like vechile and it will bring the the object from the respective
 	Management management;
 
@@ -25,13 +22,11 @@ public class Controller {
 	Team team;
 
 	@RequestMapping("signup")
-	@ResponseBody
 	public ModelAndView signup(@RequestParam String role) {
 
 		ModelAndView modelAndView = new ModelAndView(); // here Model means Object & view means frontend(jsp) here the work of model and view is nothing but carrying the object to the frontend(menas JSP)
 
 		if (role.equals("Management")) {
-
 			modelAndView.addObject("management", management);
 			modelAndView.setViewName("managementsignup.jsp");
 

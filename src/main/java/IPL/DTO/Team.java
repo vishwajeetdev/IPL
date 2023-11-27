@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class Team {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	int tid;
 
 	String name;

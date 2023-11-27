@@ -18,7 +18,6 @@ public class ManagementController {
 	ManagementDAO managementDAO;
 
 	@RequestMapping("managementsignup")
-	// @ResponseBody
 	public ModelAndView save(@ModelAttribute Management management) {
 
 		managementDAO.saveManagement(management);
@@ -26,7 +25,6 @@ public class ManagementController {
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.addObject("msg", "Management Account got Created");
-
 		modelAndView.setViewName("index.jsp");
 
 		return modelAndView;
@@ -34,7 +32,6 @@ public class ManagementController {
 	}
 
 	@RequestMapping("managementlogin")
-	// @ResponseBody
 	public ModelAndView mamangementLogin(@RequestParam String username, @RequestParam String password) {
 		Management management = managementDAO.managementLogin(username);
 

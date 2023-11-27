@@ -2,7 +2,7 @@ package IPL.Helper;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class MyDispatcher_Servlet extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class MyDispatcherServlet extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -23,6 +23,7 @@ public class MyDispatcher_Servlet extends AbstractAnnotationConfigDispatcherServ
 	protected String[] getServletMappings() {
 
 		String[] arr = { "/" };
+
 		return arr; // We have successfully Mapped Multiple URLs.
 	}
 

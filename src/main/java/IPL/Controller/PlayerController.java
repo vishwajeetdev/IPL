@@ -1,5 +1,7 @@
 package IPL.Controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import IPL.DAO.PlayerDAO;
+import IPL.DAO.TeamDAO;
 import IPL.DTO.Player;
+import IPL.DTO.Team;
 
 @RestController
 public class PlayerController {
@@ -21,9 +25,11 @@ public class PlayerController {
 	@Autowired
 	PlayerDAO playerDAO;
 
+	@Autowired
+	TeamDAO teamDao;
+
 	@RequestMapping("playersignup")
 	public ModelAndView playerSignup(@ModelAttribute Player player) {
-		player.setStatus("pending");
 
 		playerDAO.playerSignup(player);
 
@@ -85,6 +91,29 @@ public class PlayerController {
 		modelAndView.addObject("msg", "Player Info has been updated successfully");
 		modelAndView.setViewName("playerhome.jsp");
 		return modelAndView;
+
+	}
+
+	@RequestMapping("viewplayers")
+	public void viewPlayer(@RequestParam("id") int tid) {
+
+		Team team = teamDao.viewPlayerOfRespectiveTeam(tid);
+
+		List<Player> players = team.getList();
+
+		ModelAndView modelAndView = new ModelAndView();
+
+		if (players.isEmpty()) {
+			modelAndView.addObject("msg", "Pehle Player to kharido");
+			modelAndView.addObject("teamname", team.getName());
+			modelAndView.setViewName("viewTeamPlayers.jsp");
+
+		} else {
+			modelAndView.addObject("players", players);
+			modelAndView.addObject("teamname", team.getName());
+			modelAndView.setViewName("viewTeamPlayers.jsp");
+
+		}
 
 	}
 
