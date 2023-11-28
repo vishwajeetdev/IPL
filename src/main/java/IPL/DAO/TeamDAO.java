@@ -45,9 +45,25 @@ public class TeamDAO {
 
 	public Team viewPlayerOfRespectiveTeam(int tid) {
 
-		Team teams = entityManager.find(Team.class, tid);
+		Team team = entityManager.find(Team.class, tid);
 
-		return teams;
+		return team;
+
+	}
+
+	public Team changeStatus(int tid) {
+
+		Team team = entityManager.find(Team.class, tid);
+
+		return team;
+	}
+
+	public void updateTeam(Team team) {
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+
+		entityTransaction.begin();
+		entityManager.merge(team);
+		entityTransaction.commit();
 
 	}
 

@@ -98,4 +98,25 @@ public class TeamController {
 
 	}
 
+	@RequestMapping("changestatus")
+	public ModelAndView changeStatus(@RequestParam("id") int tid) {
+
+		Team team = teamDAO.changeStatus(tid);
+
+		if (team.isStatus()) {
+			team.setStatus(false);
+		} else
+			team.setStatus(true);
+
+		teamDAO.updateTeam(team);
+
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.addObject("msg", team.getName() + "'s Status Update Successfully");
+		// modelAndView.setViewName("managementhome.jsp");
+
+		return viewAllTeam();
+
+	}
+
 }

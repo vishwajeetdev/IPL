@@ -36,6 +36,7 @@
                     text-align: center;
                     line-height: 1.2;
                     position: relative;
+                     
 
                 }
 
@@ -47,6 +48,7 @@
                 td {
                     color: darkslategrey;
                     font-weight: bold;
+                    
                 }
 
 
@@ -70,6 +72,7 @@
         </head>
 
         <body>
+        	
             <h1>Welcome to View All Team List Page</h1>
 
             <table>
@@ -94,7 +97,7 @@
                             <td>${team.getWallet()}</td>
                             <td>${team.isStatus()}</td>
                             <td><a href="viewplayers?id=${team.getTid()}"><button>View Players</button></a></td>
-                            <td>Change Status</td>
+                            <td><a href="changestatus?id=${team.getTid()}"><button>Change Status</button></a></td>
                             <td>Add Amount</td>
                         </tr>
                     </special:forEach>

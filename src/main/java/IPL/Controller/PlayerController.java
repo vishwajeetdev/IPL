@@ -95,7 +95,7 @@ public class PlayerController {
 	}
 
 	@RequestMapping("viewplayers")
-	public void viewPlayer(@RequestParam("id") int tid) {
+	public ModelAndView viewPlayer(@RequestParam("id") int tid) {
 
 		Team team = teamDao.viewPlayerOfRespectiveTeam(tid);
 
@@ -114,6 +114,8 @@ public class PlayerController {
 			modelAndView.setViewName("viewTeamPlayers.jsp");
 
 		}
+
+		return modelAndView;
 
 	}
 
