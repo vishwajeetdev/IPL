@@ -45,4 +45,28 @@ public class PlayerDAO {
 
 	}
 
+	public List<Player> viewAllPlayersForAuction() {
+
+		List<Player> list = entityManager.createQuery("select x from Player x").getResultList();
+
+		return list;
+
+	}
+
+	public Player changeStatus(int id) {
+
+		Player player = entityManager.find(Player.class, id);
+
+		return player;
+	}
+
+	public void updateTeam(Player player) {
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+
+		entityTransaction.begin();
+		entityManager.merge(player);
+		entityTransaction.commit();
+
+	}
+
 }

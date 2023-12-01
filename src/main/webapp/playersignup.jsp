@@ -10,7 +10,7 @@
             <style>
                 body {
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                    background-color: #f0f0f0;
+                    background-color: #00175f;
                     margin: 0;
                     padding: 0;
                     text-align: center;
@@ -22,7 +22,7 @@
                 }
 
                 h1 {
-                    color: darkcyan;
+                    color: white;
                     margin-bottom: 30px;
                 }
 

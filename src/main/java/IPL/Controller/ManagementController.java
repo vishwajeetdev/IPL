@@ -42,10 +42,10 @@ public class ManagementController {
 
 		} else {
 			if (management.getPassword().equals(password)) {
-				modelAndView.addObject("msg", "Management Login Succesfully");
+				modelAndView.addObject("msg", "Login Succesful");
 				modelAndView.setViewName("managementhome.jsp");
 			} else {
-				modelAndView.addObject("msg", "Entered Invalid Password");
+				modelAndView.addObject("msg", "Invalid Password");
 				modelAndView.setViewName("managementlogin.jsp");
 			}
 		}

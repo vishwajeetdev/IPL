@@ -13,7 +13,7 @@
 
 <h1>Welcome to Team Home Page</h1>
 
-<a href="viewallteam">View All Team</a>
+<a href="viewavilableplayer"><button>Buy Player</button></a>
 
 </body>
 </html>

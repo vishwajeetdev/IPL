@@ -10,7 +10,7 @@
     <meta charset="ISO-8859-1">
     <title>management.home</title>
 
-    <style type="text/css">
+   <!--  <style type="text/css">
         * {
             margin: 0;
             padding: 0;
@@ -24,6 +24,7 @@
             text-align: center;
             background-color: whitesmoke;
             position: relative;
+            background-color: #00175f;
 
         }
 
@@ -202,6 +203,8 @@
             color: white;
         }
     </style>
+    
+    -->
 </head>
 
 <body>
@@ -215,6 +218,8 @@
     <div class="wlcm">Welcome To Management Home</div>
 
     <a href="viewallteam"><button>View All Team</button></a>
+    
+    <a href="viewallplayers"><button>View All Players</button></a>
 
     <div class="msd-img"></div>
     <div class="rohit-img"></div>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import IPL.DAO.TeamDAO;
 import IPL.DTO.Team;
@@ -23,12 +24,14 @@ public class TeamController {
 	@Autowired
 	TeamDAO teamDAO;
 
+	ModelAndView modelAndView = new ModelAndView();
+
 	@RequestMapping("teamsignup")
 	public ModelAndView teamSignup(@ModelAttribute Team team) {
 
 		teamDAO.teamSignup(team);
 
-		ModelAndView modelAndView = new ModelAndView();
+		// ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.addObject("msg", "Team Account created successfully");
 		modelAndView.setViewName("index.jsp");
@@ -41,7 +44,7 @@ public class TeamController {
 	public ModelAndView teamLogin(@RequestParam String username, @RequestParam String password, HttpSession httpSession) {
 		Team team = teamDAO.teamLogin(username);
 
-		ModelAndView modelAndView = new ModelAndView();
+		// ModelAndView modelAndView = new ModelAndView();
 
 		if (team == null) {
 
@@ -49,13 +52,13 @@ public class TeamController {
 			modelAndView.setViewName("teamlogin.jsp");
 
 		} else {
-			httpSession.setAttribute("team", team); // here it is used to take the current user information -- to edit or update purpose
+			// httpSession.setAttribute("team", team); // here it is used to take the current user information -- to edit or update purpose
 
 			if (team.getPassword().equals(password)) {
 
 				if (team.isStatus()) {
 					httpSession.setAttribute("team", team);
-					modelAndView.addObject("msg", "Team Login Succesfully");
+					modelAndView.addObject("msg", "Login Succesfull");
 					modelAndView.addObject("name", team.getName());
 					modelAndView.setViewName("teamhome.jsp");
 
@@ -69,7 +72,7 @@ public class TeamController {
 
 			} else {
 
-				modelAndView.addObject("msg", "Entered Invalid Password");
+				modelAndView.addObject("msg", "Invalid Password");
 				modelAndView.setViewName("teamlogin.jsp");
 			}
 		}
@@ -83,7 +86,7 @@ public class TeamController {
 
 		List<Team> teams = teamDAO.viewAllTeam();
 
-		ModelAndView modelAndView = new ModelAndView();
+		// ModelAndView modelAndView = new ModelAndView();
 
 		if (teams.isEmpty()) {
 			modelAndView.addObject("msg", "No Team Avilable");
@@ -98,7 +101,7 @@ public class TeamController {
 
 	}
 
-	@RequestMapping("changestatus")
+	@RequestMapping("changeteamstatus")
 	public ModelAndView changeStatus(@RequestParam("id") int tid) {
 
 		Team team = teamDAO.changeStatus(tid);
@@ -110,10 +113,38 @@ public class TeamController {
 
 		teamDAO.updateTeam(team);
 
-		ModelAndView modelAndView = new ModelAndView();
+		// ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.addObject("msg", team.getName() + "'s Status Update Successfully");
 		// modelAndView.setViewName("managementhome.jsp");
+
+		return viewAllTeam();
+
+	}
+
+	@RequestMapping("addamount")
+	public ModelAndView addAmount(@RequestParam double amount, int id, RedirectAttributes redirectAttributes) {
+
+		Team team = teamDAO.addAmount(id);
+
+		double updatedWallet = team.getWallet() + amount;
+
+		team.setWallet(updatedWallet);
+
+		teamDAO.updateTeam(team);
+
+		redirectAttributes.addFlashAttribute("msg", amount + "cr has been added into " + team.getUsername() + "'s wallet");
+
+		return new ModelAndView("redirect:/viewallteam");
+
+	}
+
+	@RequestMapping("setzero")
+	public ModelAndView setzero(@RequestParam int id) {
+		Team team = teamDAO.addAmount(id);
+		team.setWallet(0);
+
+		teamDAO.updateTeam(team);
 
 		return viewAllTeam();
 

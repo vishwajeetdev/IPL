@@ -1,124 +1,204 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html>
-    <html lang="en">
+<!-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %> -->
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="ISO-8859-1">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Signup Page</title>
+<head>
+  <meta charset="ISO-8859-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Page</title>
 
-        <style>
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                background-color: #f0f0f0;
-                margin: 0;
-                padding: 0;
-                text-align: center;
-            }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600&family=Merienda:wght@800&family=Noto+Serif:ital@1&family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
 
-            h1 {
-                color: #333;
-                margin-top: 30px;
-            }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
 
-            form {
-                width: 25%;
-                margin: auto;
-                background-color: #fff;
-                padding: 30px;
-                border-radius: 8px;
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-                margin-top: 30px;
-            }
-
-            h2 {
-                color: #555;
-                margin-bottom: 20px;
-            }
-                
-            .choose{
-            width: 50%;
-            height: 17%;
-            border: 1px solid white;
-            margin-left: 95px;
-             border-radius: 8px;
-            box-shadow: 0 0 4px rgb(62, 41, 41);
-            padding-top: 3%;
-            padding-left: 2%;
+    body {
+      position: relative;
+      background-color: #071026;
 
 
+    }
 
-            }
+    nav {
+      background-color: #262E4A;
+      height: 50px;
+      display: flex;
+      align-items: center;
+    }
 
-            label {
-                display: flex;
-                align-items: center;
-                margin-bottom: 15px;
-                color: #555;
-                margin-left: 10px;
-            }
+    nav>.choose {
+      height: 40px;
+      width: 400px;
+      border: 1px solid none;
+      display: flex;
+      justify-content: space-around;
+      margin-left: auto;
+      align-items: center;
+    }
 
-            input[type="radio"] {
-                margin-right: 10px;
-            }
+    button {
+      padding: 0px 5px;
+      height: 35px;
+      border: 2px solid darkblue;
+      background-color: #006BFF;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      border-radius: 7px;
+      cursor: pointer;
+    }
 
-            button {
-                background-color: #4caf50;
-                color: #fff;
-                padding: 12px 24px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                transition: background-color 0.3s;
-            }
+    button:hover {
+      background-color: #0F53B7;
+    }
 
-            button[type="reset"] {
-                background-color: #f44336;
-                margin-left: 10px;
-            }
+    .grid-container {
+      margin: 30px auto;
+      margin-left: 20px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      /* 5 columns with equal width */
+      grid-template-rows: repeat(2, 1fr);
+      /* 2 rows with equal height */
+      gap: 80px;
+      /* Adjust the gap as needed */
+    }
 
-            button:hover,
-            button[type="reset"]:hover {
-                background-color: #45a049;
-            }
+    .grid-container>div {
+      height: 220px;
+      /* Adjust the height as needed */
+      width: 220px;
+      /* Adjust the width as needed */
+      border: 2px solid #C6C3C3;
+      border-radius: 10px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
-            a {
-                color: #007bff;
-                text-decoration: none;
-            }
+    .csk {
+      background-image: url('/IPL/Images/CSK.png');
+    }
 
-            a:hover {
-                text-decoration: underline;
-            }
+    .csk:hover {
+      background-image: url('/IPL/Images/CSK-TROPHY.png');
+    }
 
-        
+    .dc {
+      background-image: url('DC.png');
+    }
 
-        </style>
-    </head>
+    .gt {
+      background-image: url('gt.png');
+    }
 
-    <body>
-        <h1>Welcome to the Signup Page</h1>
+    .gt:hover {
+      background-image: url('gt\ trophy.png');
+    }
 
-        <form action="signup">
+    .kkr {
+      background-image: url('kkr.png');
+    }
 
-            <h2>Choose your role</h2>
+    .kkr:hover {
+      background-image: url('kkr\ trophy.png');
+    }
 
-            <div class="choose">
-                <label><input type="radio" name="role" value="Management"> Management</label>
-                <label><input type="radio" name="role" value="Team"> Team</label>
-                <label><input type="radio" name="role" value="Player"> Player</label>
-            </div>
+    .lsg {
+      background-image: url('lsg.png');
+    }
 
-            <br>
-            <button type="submit">Submit</button>
-            <button type="reset">Cancel</button>
 
-            <br>
-            <br>
+    .mi {
+      background-image: url('mi.png');
+    }
 
-            <p>Already have an account? <a href="index.jsp">Click here to login</a></p>
+    .mi:hover {
+      background-image: url('mi\ trohy.png');
+    }
 
-        </form>
-    </body>
+    .pb {
+      background-image: url('pb.png');
+    }
 
-    </html>
+    .rr {
+      background-image: url('rr.png');
+    }
+
+    .rr:hover {
+      background-image: url('rr\ trpohy.png');
+    }
+
+    .rcb {
+      background-image: url('rcb.png');
+    }
+
+    .srh {
+      background-image: url('srh.png');
+    }
+
+    .srh:hover {
+      background-image: url('srh\ trophy.png');
+    }
+
+    footer {
+      width: 100%;
+      height: 50px;
+      background-color: black;
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: absolute;
+      top: 645px;
+
+    }
+  </style>
+
+</head>
+
+<!-- <link rel="stylesheet" href="style.css"> -->
+
+<body>
+  <!-- <h1>Welcome to the Signup Page</h1> -->
+
+  <form action="signup">
+
+
+
+    <nav>
+      <div class="choose">
+        <button type="submit" value="Management" name="role">Management</button>
+        <button type="submit" value="Team" name="role">Team</button>
+        <button type="submit" value="Player" name="role">Player</button>
+      </div>
+    </nav>
+
+  </form>
+
+  <div class="grid-container">
+    <div class="csk"></div>
+    <div class="rcb"></div>
+    <div class="gt"></div>
+    <div class="lsg"></div>
+    <div class="srh"></div>
+    <div class="pb"></div>
+    <div class="dc"></div>
+    <div class="mi"></div>
+    <div class="kkr"></div>
+    <div class="rr"></div>
+  </div>
+
+
+  <footer>Copyright © IPL 2023 All Rights Reserved.</footer>
+</body>
+
+</html>

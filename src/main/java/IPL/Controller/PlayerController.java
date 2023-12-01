@@ -28,12 +28,12 @@ public class PlayerController {
 	@Autowired
 	TeamDAO teamDao;
 
+	ModelAndView modelAndView = new ModelAndView();
+
 	@RequestMapping("playersignup")
 	public ModelAndView playerSignup(@ModelAttribute Player player) {
 
 		playerDAO.playerSignup(player);
-
-		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.addObject("msg", "Player Account created successfully");
 		modelAndView.setViewName("index.jsp");
@@ -46,7 +46,7 @@ public class PlayerController {
 	public ModelAndView mamangementLogin(@RequestParam String username, @RequestParam String password, HttpSession httpSession) {
 		Player player = playerDAO.playerLogin(username);
 
-		ModelAndView modelAndView = new ModelAndView();
+		// ModelAndView modelAndView = new ModelAndView();
 
 		if (player == null) {
 
@@ -57,12 +57,12 @@ public class PlayerController {
 			httpSession.setAttribute("player", player); // here it is used to take the current user information -- to edit or update purpose
 
 			if (player.getPassword().equals(password)) {
-				modelAndView.addObject("msg", "Player Login Succesfully");
+				modelAndView.addObject("msg", "Login Succesfully");
 				modelAndView.addObject("name", player.getName());
 				modelAndView.setViewName("playerhome.jsp");
 			} else {
 
-				modelAndView.addObject("msg", "Entered Invalid Password");
+				modelAndView.addObject("msg", "Invalid Password");
 				modelAndView.setViewName("playerlogin.jsp");
 			}
 		}
@@ -76,7 +76,8 @@ public class PlayerController {
 
 		Player player = (Player) httpSession.getAttribute("player");
 
-		ModelAndView modelAndView = new ModelAndView();
+		// ModelAndView modelAndView = new ModelAndView();
+
 		modelAndView.addObject("player", player);
 		modelAndView.setViewName("editplayer.jsp");
 		return modelAndView;
@@ -87,7 +88,8 @@ public class PlayerController {
 	public ModelAndView updateInfo(@ModelAttribute Player player) {
 		playerDAO.playerUpdate(player);
 
-		ModelAndView modelAndView = new ModelAndView();
+		// ModelAndView modelAndView = new ModelAndView();
+
 		modelAndView.addObject("msg", "Player Info has been updated successfully");
 		modelAndView.setViewName("playerhome.jsp");
 		return modelAndView;
@@ -101,7 +103,7 @@ public class PlayerController {
 
 		List<Player> players = team.getList();
 
-		ModelAndView modelAndView = new ModelAndView();
+		// ModelAndView modelAndView = new ModelAndView();
 
 		if (players.isEmpty()) {
 			modelAndView.addObject("msg", "Pehle Player to kharido");
@@ -116,6 +118,56 @@ public class PlayerController {
 		}
 
 		return modelAndView;
+
+	}
+
+	@RequestMapping("viewallplayers")
+	public ModelAndView viewAllPlayersForAuction() {
+		// ModelAndView modelAndView = new ModelAndView();
+
+		List<Player> players = playerDAO.viewAllPlayersForAuction();
+
+		if (players.isEmpty()) {
+
+			modelAndView.addObject("msg", "No Players are avilable for auction");
+			modelAndView.setViewName("managementhome.jsp");
+
+		} else {
+			modelAndView.addObject("players", players);
+			modelAndView.setViewName("viewallplayers.jsp");
+
+		}
+
+		return modelAndView;
+
+	}
+
+	@RequestMapping("changeplayerstatus")
+	public ModelAndView changeStatus(@RequestParam("id") int id) {
+
+		Player player = playerDAO.changeStatus(id);
+
+		if (player.isStatus()) {
+			player.setStatus(false);
+		} else
+			player.setStatus(true);
+
+		playerDAO.updateTeam(player);
+
+		// ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.addObject("msg", player.getName() + "'s Status Update Successfully");
+		// modelAndView.setViewName("managementhome.jsp");
+
+		return viewAllPlayersForAuction();
+
+	}
+
+	@RequestMapping("viewavilableplayer")
+	public void viewPlayerAllowedForAuction(HttpSession httpSession) {
+
+		Team team = (Team) httpSession.getAttribute("team");
+		team.getList();
 
 	}
 

@@ -1,129 +1,198 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-     <%@ taglib prefix="special" uri="http://www.springframework.org/tags/form" %> 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>managementsignup.jsp</title>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 
 
-<style>
-        
-                body {
-                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                    background-color: #f0f0f0;
-                    margin: 0;
-                    padding: 0;
-                    text-align: center;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100vh;
-                }
+  <!DOCTYPE html>
+  <html lang="en">
 
-                h1 {
-                    color: darkcyan;
-                    margin-bottom: 30px;
-                }
+  <head>
+    <meta charset="UTF-8">
+    <title>managementsignup.jsp</title>
+    <!-- <link rel="stylesheet" href="./style.css"> -->
 
-                .form {
-                    width: 34%;
-                    background-color: #fff;
-                    padding: 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-                    box-sizing: border-box;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+      }
 
-                input,
-                select {
-                    width: 90%;
-                    /* Adjust the width as needed */
-                    padding: 10px;
-                    margin-bottom: 15px;
-                    box-sizing: border-box;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                }
+      section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 100%;
+        background: url("https://bit.ly/44VaKoy") no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
 
-                button {
-                    width: 50%;
-                    /* Adjust the width as needed */
-                    background-color: rgb(13, 117, 221);
-                    color: #fff;
-                    padding: 10px 20px;
-                    border: none;
-                    border-radius: 4px;
-                    cursor: pointer;
-                    transition: background-color 0.3s;
-                    margin: 20px 10px;
-                    font-weight: bold;
-                    font-size: large;
-                    border: 1px solid rgb(13, 117, 221);
-                }
+      .form-box {
+        position: relative;
+        width: 400px;
+        height: 450px;
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        backdrop-filter: blur(15px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-                button[type=reset] {
-                    background-color: white;
-                    color: darkgreen;
-                    border: 1px solid darkgreen;
+      h2 {
+        font-size: 2em;
+        color: #fff;
+        text-align: center;
+      }
 
-                }
+      .inputbox {
+        position: relative;
+        margin: 30px 0;
+        width: 310px;
+        border-bottom: 2px solid #fff;
+      }
 
+      .inputbox label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        color: #fff;
+        font-size: 1em;
+        pointer-events: none;
+        transition: 0.5s;
+      }
 
+      input:focus~label {
+        top: -5px;
+      }
 
+      input:valid~label {
+        top: -5px;
+      }
 
+      .inputbox input {
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1em;
+        padding: 0 35px 0 5px;
+        color: #fff;
+      }
 
-                .button {
-                    display: flex;
+      .inputbox ion-icon {
+        position: absolute;
+        right: 8px;
+        color: #fff;
+        font-size: 1.2em;
+        top: 20px;
+      }
 
-                }
+      .forget {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0 15px;
+        font-size: 0.9em;
+        color: #fff;
+      }
 
-                .button>button[type=reset]:hover {
+      .forget label:nth-child(2) {
+        order: 1;
+      }
 
-                    color: red;
-                    background-color: rgb(206, 223, 206);
-                     border: 1px solid red;
+      .forget label {
+        display: flex;
+        align-items: center;
+      }
 
-                }
+      .forget label input[type="checkbox"] {
+        margin-right: 6px;
+      }
 
-                .button>button:hover {
+      .forget label a {
+        color: #fff;
+        text-decoration: none;
+      }
 
-                    color: rgb(13, 117, 221);
-                    background-color: white;
+      .forget label a:hover {
+        text-decoration: underline;
+      }
 
-                }
-           
-</style>
-</head>
-<body>
-<h1>Welcome to Management Sign up</h1>
+      button {
+        width: 100%;
+        height: 40px;
+        border-radius: 40px;
+        background: #fff;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: 600;
+      }
 
-<div class="form">
+      .register {
+        font-size: 0.9em;
+        color: #fff;
+        text-align: center;
+        margin: 25px 0 10px;
+      }
 
-<special:form action="managementsignup" modelAttribute="management">
+      .register p a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+      }
 
-Username: <special:input path="username"/>
-<br>
-<br>
+      .register p a:hover {
+        text-decoration: underline;
+      }
+    </style>
 
-Password: <special:input path="password"/>
-<br>
-<br>
+  </head>
 
-<div class="button">
-<special:button>Signup</special:button>  <special:button type="reset">Cancel</special:button>
-</div>
+  <body>
+    <!-- partial:index.partial.html -->
+ <section>
+  <div class="form-box">
+    <div class="form-value">
+      <form action="managementsignup" method="post"> <!-- Specify the method as POST -->
+        <h2>Signup</h2>
 
+        <div class="inputbox">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="text" path="username" name="username" required>
+          <label for="">Email</label>
+        </div>
+        <div class="inputbox">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" path="password" name="password" required>
+          <label for="">Password</label>
+        </div>
 
+        <div class="forget">
+          <label>
+            <input type="checkbox" name="rememberMe"> Remember me
+          </label>
+          <label>
+            <a href="#">Forgot password?</a>
+          </label>
+        </div>
+        <button type="submit">Signup</button> <!-- Specify the type as submit -->
 
-</special:form>
+      </form>
+      <div class="register">
+        <p>Already have an account <a href="managementlogin.jsp">Login</a></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
+    <!-- partial -->
+    <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
+    <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js'></script>
+  </body>
 
-</body>
-</html>
+  </html>

@@ -24,9 +24,11 @@
                     width: 90%;
                     border-collapse: collapse;
                     margin: 20px auto;
-                     background-color: whitesmoke;
+                    background-color: whitesmoke;
                     box-shadow: 0 0 10px black;
                     table-layout: auto;
+                    
+                    
                 }
 
                 th,
@@ -36,6 +38,7 @@
                     text-align: center;
                     line-height: 1.2;
                     position: relative;
+                    
                      
 
                 }
@@ -43,11 +46,14 @@
                 th {
                     background-color: #3498db;
                     color: white;
+                    
                 }
 
                 td {
                     color: darkslategrey;
                     font-weight: bold;
+                    
+                    
                     
                 }
 
@@ -74,36 +80,31 @@
         <body>
         	
         	<h1>${msg}</h1>
-            <h1>Welcome to View All Team List Page</h1>
+            <h1>Welcome to View All Player List Page</h1>
 
             <table>
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Wallet</th>
-                        <th>Status</th>
-                        <th>Players</th>
-                        <th>Change Status</th>
-                        <th>Add Amount</th>
-                        
+							<th>id</th>
+							<th>Name</th>
+							<th>Role</th>
+							<th>Base Price</th>
+							<th>Country</th>
+							<th>Status</th>
+							<th>Change Status</th>                        
                     </tr>
                 </thead>
                 <tbody>
-                    <special:forEach var="team" items="${teams}">
+                    <special:forEach var="player" items="${players}">
                         <tr>
-                            <td>${team.getTid()}</td>
-                            <td>${team.getName()}</td>
-                            <td>${team.getUsername()}</td>
-                            <td>${team.getWallet()}</td>
-                            <td>${team.isStatus()}</td>
+                            <td>${player.getId()}</td>
+                            <td>${player.getName()}</td>
+                            <td>${player.getRole()}</td>
+                            <td>${player.getPrice()}</td>
+                            <td>${player.getCountry()}</td>
+                            <td>${player.isStatus()}</td>                            
+                            <td><a href="changeplayerstatus?id=${player.getId()}"><button>Change Status</button></a></td>
                             
-                            <td><a href="viewplayers?id=${team.getTid()}"><button>View Players</button></a></td>
-                            
-                            <td><a href="changeteamstatus?id=${team.getTid()}"><button>Change Status</button></a></td>
-                            
-                            <td><a href="addamount.jsp?id=${team.getTid()}"><button>Add Amount</button></a></td>
                         </tr>
                     </special:forEach>
                 </tbody>

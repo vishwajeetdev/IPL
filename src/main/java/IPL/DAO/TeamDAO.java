@@ -67,4 +67,12 @@ public class TeamDAO {
 
 	}
 
+	public Team addAmount(int id) {
+
+		Team team = entityManager.find(Team.class, id);
+
+		return team;
+
+	}
+
 }
