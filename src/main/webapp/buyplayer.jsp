@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="special"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
 
-        <!DOCTYPE html>
-        <html lang="en">
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="special"%>
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>buyplayer.jsp</title>
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <style>
+ <style>
                 body {
                     font-family: Arial, sans-serif;
                     background-color: #f4f4f4;
@@ -18,6 +19,9 @@
                 h1 {
                     color: darkcyan;
                     text-align: center;
+                }
+                h3{
+                 text-align: center;
                 }
 
                 table {
@@ -75,11 +79,23 @@
                     border:1px solid #3498db;
                 }
             </style>
-        </head>
 
-        <body>
-        	
-        	<h1>${msg}</h1>
+
+
+
+
+
+</head>
+<body>
+
+<h1>${msg}</h1>
+
+<h3 style="color:red;">Team Name = ${teamname}</h3>
+<h3 style="color:blue;">Wallet = ${teamwallet} cr</h3>
+
+
+
+
             <h1>Welcome to View All Player List Page</h1>
 
             <table>
@@ -88,10 +104,11 @@
 							<th>id</th>
 							<th>Name</th>
 							<th>Role</th>
-							<th>Base Price(in cr)</th>
+							<th>Base Price</th>
 							<th>Country</th>
 							<th>Status</th>
-							<th>Change Status</th>                        
+							<th>Buy</th>
+							                     
                     </tr>
                 </thead>
                 <tbody>
@@ -102,15 +119,15 @@
                             <td>${player.getRole()}</td>
                             <td>${player.getPrice()}</td>
                             <td>${player.getCountry()}</td>
-                            <td>${player.getStatus()}</td>                            
-                            <td><a href="changeplayerstatus?id=${player.getId()}"><button>Change Status</button></a></td>
+                             <td>${player.getStatus()}</td>
+                                                     
+                            <td><a href="buyplayer?id=${player.getId()}"><button>Buy Player</button></a></td>
                             
                         </tr>
                     </special:forEach>
                 </tbody>
             </table>
-        </body>
 
-        </html>
-        
-        
+
+</body>
+</html>

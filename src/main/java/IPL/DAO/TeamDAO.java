@@ -46,7 +46,6 @@ public class TeamDAO {
 	public Team viewPlayerOfRespectiveTeam(int tid) {
 
 		Team team = entityManager.find(Team.class, tid);
-
 		return team;
 
 	}

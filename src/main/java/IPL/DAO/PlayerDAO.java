@@ -19,6 +19,8 @@ public class PlayerDAO {
 	public void playerSignup(Player player) {
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 
+		player.setStatus("Pending");
+
 		entityTransaction.begin();
 		entityManager.persist(player);
 		entityTransaction.commit();
@@ -67,6 +69,26 @@ public class PlayerDAO {
 		entityManager.merge(player);
 		entityTransaction.commit();
 
+	}
+
+	public List<Player> viewAllPlayersForPurchase() {
+
+		List<Player> list = entityManager.createQuery("SELECT x FROM Player x WHERE status = 'Avilable' OR status = 'Sold Out'", Player.class).getResultList();
+		return list;
+//		try {
+//			
+//		} catch (Exception e) {
+//			// Log or print the exception
+//			e.printStackTrace();
+//			return Collections.emptyList(); // or return null if needed
+//		}
+	}
+
+	public Player findPlayerForPurchase(int id) {
+
+		Player player = entityManager.find(Player.class, id);
+
+		return player;
 	}
 
 }

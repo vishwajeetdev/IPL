@@ -136,15 +136,15 @@
 
                 <special:select path="price">
                     <special:option value=" ">Base-Price</special:option>
-                    <special:option value="200">2 cr</special:option>
-                    <special:option value="150">1.5 cr</special:option>
-                    <special:option value="100">1 cr</special:option>
-                    <special:option value="75">75 lakh</special:option>
-                    <special:option value="50">50 lakh</special:option>
-                    <special:option value="40">40 lakh</special:option>
-                    <special:option value="30">30 lakh</special:option>
-                    <special:option value="20">20 lakh</special:option>
-                    <special:option value="10">10 lakh</special:option>
+                    <special:option value="2">2 cr</special:option>
+                    <special:option value="1.5">1.5 cr</special:option>
+                    <special:option value="1">1 cr</special:option>
+                    <special:option value="0.75">75 lakh</special:option>
+                    <special:option value="0.50">50 lakh</special:option>
+                    <special:option value="0.40">40 lakh</special:option>
+                    <special:option value="0.30">30 lakh</special:option>
+                    <special:option value="0.20">20 lakh</special:option>
+                    <special:option value="0.10">10 lakh</special:option>
                 </special:select>
 
                  <div class="button">

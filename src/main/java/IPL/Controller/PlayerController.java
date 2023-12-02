@@ -43,7 +43,7 @@ public class PlayerController {
 	}
 
 	@RequestMapping("playerlogin")
-	public ModelAndView mamangementLogin(@RequestParam String username, @RequestParam String password, HttpSession httpSession) {
+	public ModelAndView playerLogin(@RequestParam String username, @RequestParam String password, HttpSession httpSession) {
 		Player player = playerDAO.playerLogin(username);
 
 		// ModelAndView modelAndView = new ModelAndView();
@@ -147,10 +147,12 @@ public class PlayerController {
 
 		Player player = playerDAO.changeStatus(id);
 
-		if (player.isStatus()) {
-			player.setStatus(false);
-		} else
-			player.setStatus(true);
+		if (player.getStatus().equals("Pending")) {
+			player.setStatus("Avilable");
+		} else if (player.getStatus().equals("Avilable")) {
+			player.setStatus("Pending");
+
+		}
 
 		playerDAO.updateTeam(player);
 
@@ -164,10 +166,65 @@ public class PlayerController {
 	}
 
 	@RequestMapping("viewavilableplayer")
-	public void viewPlayerAllowedForAuction(HttpSession httpSession) {
+	public ModelAndView viewPlayerAllowedForAuction(HttpSession httpSession) {
 
 		Team team = (Team) httpSession.getAttribute("team");
-		team.getList();
+
+		List<Player> players = playerDAO.viewAllPlayersForPurchase();
+
+		if (players.isEmpty()) {
+			modelAndView.addObject("msg", "No Player Avilable");
+			modelAndView.setViewName("teamhome.jsp");
+
+		} else {
+
+			modelAndView.addObject("players", players);
+			modelAndView.setViewName("buyplayer.jsp");
+
+		}
+
+		modelAndView.addObject("teamname", team.getName());
+		modelAndView.addObject("teamwallet", team.getWallet());
+		return modelAndView;
+
+	}
+
+	@RequestMapping("buyplayer")
+	public ModelAndView buyPlayer(@RequestParam("id") int id, HttpSession httpSession) {
+
+		Team team = (Team) httpSession.getAttribute("team");
+
+		Player player = playerDAO.findPlayerForPurchase(id);
+
+		if (team.getWallet() < player.getPrice()) {
+			modelAndView.addObject("msg", "You don't have enough balance");
+			modelAndView.setViewName("buyplayer.jsp");
+
+		} else if (player.getStatus().equals("Sold Out")) {
+
+			modelAndView.addObject("msg", player.getName() + " Already Bought ");
+			modelAndView.setViewName("buyplayer.jsp");
+
+		}
+
+		else if (player.getStatus().equals("Avilable")) {
+			player.setTeam(team);
+			player.setStatus("Sold Out");
+
+			team.setWallet(team.getWallet() - player.getPrice());
+
+			playerDAO.playerUpdate(player);
+			teamDao.updateTeam(team);
+
+			modelAndView.addObject("msg", "You have Successfully bought " + player.getName());
+			modelAndView.setViewName("buyplayer.jsp");
+
+		}
+
+		modelAndView.addObject("teamname", team.getName());
+		modelAndView.addObject("teamwallet", team.getWallet());
+
+		return modelAndView;
 
 	}
 

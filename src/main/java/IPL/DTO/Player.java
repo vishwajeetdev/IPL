@@ -28,7 +28,7 @@ public class Player {
 
 	String password;
 
-	boolean status;
+	String status;
 
 	@ManyToOne
 	Team team;
@@ -89,11 +89,11 @@ public class Player {
 		this.password = password;
 	}
 
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

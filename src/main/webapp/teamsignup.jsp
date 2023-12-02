@@ -30,9 +30,16 @@ Wallet: <special:input path="wallet"/>
 
 <special:button>Signup</special:button>  <special:button type="reset">Cancel</special:button>
 
+<br><br>
+
+
+
+
 
 
 </special:form>
+
+<a href="teamlogin.jsp"><button>login</button></a>
 
 </body>
 </html>
