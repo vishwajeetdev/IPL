@@ -1,5 +1,6 @@
 package IPL.Controller;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -200,24 +201,62 @@ public class PlayerController {
 			modelAndView.addObject("msg", "You don't have enough balance");
 			modelAndView.setViewName("buyplayer.jsp");
 
-		} else if (player.getStatus().equals("Sold Out")) {
+		} else {
+			if (player.getStatus().equals("Sold Out")) {
 
-			modelAndView.addObject("msg", player.getName() + " Already Bought ");
-			modelAndView.setViewName("buyplayer.jsp");
+				modelAndView.addObject("msg", player.getName() + " Already Bought ");
+				modelAndView.setViewName("buyplayer.jsp");
 
-		}
+			}
 
-		else if (player.getStatus().equals("Avilable")) {
-			player.setTeam(team);
-			player.setStatus("Sold Out");
+			else if (player.getStatus().equals("Avilable")) {
 
-			team.setWallet(team.getWallet() - player.getPrice());
+//				 team.setWallet(team.getWallet() - player.getPrice());
 
-			playerDAO.playerUpdate(player);
-			teamDao.updateTeam(team);
+//				This is Actual Logic
 
-			modelAndView.addObject("msg", "You have Successfully bought " + player.getName());
-			modelAndView.setViewName("buyplayer.jsp");
+//				double teamWallet = team.getWallet();
+//		        double playerPrice = player.getPrice();
+//
+//		        // Calculate the new wallet value
+//		        double newWalletValue = teamWallet - playerPrice;
+//
+//		        // Create a DecimalFormat object with a pattern for two decimal places
+//		        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+//
+//		        // Format the new wallet value using DecimalFormat
+//		        String formattedWalletValue = decimalFormat.format(newWalletValue);
+//
+//		        // Convert the formatted string back to a double
+//		        double roundedWalletValue = Double.parseDouble(formattedWalletValue);
+//
+//		        // Set the new rounded wallet value
+//		        team.setWallet(roundedWalletValue);
+
+				DecimalFormat decimalFormat = new DecimalFormat("#.##");
+
+				team.setWallet(Double.parseDouble(decimalFormat.format(team.getWallet() - player.getPrice())));
+
+				player.setTeam(team);
+				player.setStatus("Sold Out");
+
+//				player.setTeam(team);
+//				player.setStatus("Sold Out");
+//				playerDAO.playerUpdate(player);
+//				teamDao.updateTeam(team);
+
+				List<Player> players = team.getList();
+
+				players.add(player);
+				team.setList(players);
+
+				playerDAO.playerUpdate(player);
+				teamDao.updateTeam(team);
+
+				modelAndView.addObject("msg", "You have Successfully bought " + player.getName());
+				modelAndView.setViewName("buyplayer.jsp");
+
+			}
 
 		}
 
