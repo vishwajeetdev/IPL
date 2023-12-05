@@ -28,7 +28,7 @@ public class Controller {
 
 		if (role.equals("Management")) {
 			modelAndView.addObject("management", management);
-			modelAndView.setViewName("managementsignup.jsp");
+			modelAndView.setViewName("managementlogin.jsp");
 
 		} else if (role.equals("Player")) {
 			modelAndView.addObject("player", player);

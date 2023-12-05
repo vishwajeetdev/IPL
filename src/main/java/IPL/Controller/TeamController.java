@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import IPL.DAO.TeamDAO;
+import IPL.DTO.Player;
 import IPL.DTO.Team;
 
 @RestController
@@ -147,6 +148,64 @@ public class TeamController {
 		teamDAO.updateTeam(team);
 
 		return viewAllTeam();
+
+	}
+
+	@RequestMapping("viewteam")
+	public ModelAndView viewTeamsPlayer(HttpSession httpSession) {
+		modelAndView.clear();
+
+		Team team = (Team) httpSession.getAttribute("team");
+
+		List<Player> players = team.getList();// here we are going to get the list of player who have been sold out to respective team
+
+		if (players.isEmpty()) {
+
+			modelAndView.addObject("teamname", team.getName());
+			modelAndView.addObject("msgg", "No Player has been bought by");
+			modelAndView.setViewName("viewmyteam.jsp");
+
+		} else {
+
+			modelAndView.addObject("teamname", team.getName());
+			modelAndView.addObject("players", players);
+			modelAndView.setViewName("viewmyteam.jsp");
+
+		}
+
+		return modelAndView;
+
+	}
+
+	@RequestMapping("teamhomedummy")
+	public ModelAndView teamHomeDummy(HttpSession httpSession) {
+
+		modelAndView.clear();
+
+		Team team = (Team) httpSession.getAttribute("team");
+
+//		modelAndView.addObject("teamname", team.getName());
+		modelAndView.setViewName("teamhome.jsp");
+
+		return modelAndView;
+
+	}
+
+	@RequestMapping("viewteambyname")
+	public ModelAndView viewTeamBy() {
+
+		List<Team> teams = teamDAO.getAll();
+
+		modelAndView.addObject("teams", teams);
+
+		modelAndView.setViewName("viewteambyname.jsp");
+
+		return modelAndView;
+
+	}
+
+	@RequestMapping("fetchusingteamname")
+	public void fetchUsingTeam() {
 
 	}
 

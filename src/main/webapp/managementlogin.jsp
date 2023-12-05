@@ -262,7 +262,7 @@
         </div>
 
         <div class="register">
-          <span>Don't have an account? <a href="#">Register</a></span>
+          <span>Don't have an account? <a href="managementsignup.jsp">Register</a></span>
         </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600&family=Merienda:wght@800&family=Noto+Serif:ital@1&family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
 
-  <style>
+  <style type="text/css">
     * {
       margin: 0;
       padding: 0;
@@ -84,11 +84,11 @@
     }
 
     .csk {
-      background-image: url('/IPL/Images/CSK.png');
+      background-image: url('/Image/CSK.png');
     }
 
     .csk:hover {
-      background-image: url('/IPL/Images/CSK-TROPHY.png');
+      background-image: url('/Image/CSK-TROPHY.png');
     }
 
     .dc {

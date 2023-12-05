@@ -25,7 +25,7 @@ public class ManagementController {
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.addObject("msg", "Management Account got Created");
-		modelAndView.setViewName("index.jsp");
+		modelAndView.setViewName("managementlogin.jsp");
 
 		return modelAndView;
 

@@ -7,15 +7,22 @@
   <meta charset="UTF-8">
   <title>addamount.jsp</title>
   
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600&family=Merienda:wght@800&family=Noto+Serif:ital@1&family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+
+
+  
+  
 
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+   
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Roboto", sans-serif;
+      font-family: 'Hind Siliguri', sans-serif;
       
     }
     
