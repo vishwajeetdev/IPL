@@ -81,4 +81,10 @@ public class TeamDAO {
 
 	}
 
+	public List<Team> fetchUsingTeamName(String name) {
+
+		return entityManager.createQuery("select x from Team x where name=?1").setParameter(1, name).getResultList();
+
+	}
+
 }

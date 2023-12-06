@@ -15,7 +15,7 @@
 
 <form action="fetchusingteamname">
 
-<select name="teamname">
+<select name="name">
 
 
 <special:forEach var="team" items="${teams}">

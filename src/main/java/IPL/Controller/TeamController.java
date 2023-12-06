@@ -205,7 +205,18 @@ public class TeamController {
 	}
 
 	@RequestMapping("fetchusingteamname")
-	public void fetchUsingTeam() {
+	public ModelAndView fetchUsingTeam(@RequestParam String name) {
+
+		List<Team> list = teamDAO.fetchUsingTeamName(name);
+
+		Team team = list.get(0);
+
+		List<Player> player = team.getList();
+
+		modelAndView.addObject("players", player);
+		modelAndView.setViewName("viewmyteam.jsp");
+
+		return modelAndView;
 
 	}
 
